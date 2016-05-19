@@ -1,0 +1,9 @@
+git log --format='%aN' $1 
+| sort -u 
+| while read user; do 
+	echo '';
+	echo $user;
+	echo '-----------------'
+	
+	git log --numstat --pretty="%H" $1 --author="$user" | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("Added: %d\nRemoved: %d\nTotal Lines Contributed: %d\n", plus, minus, plus-minus)}'  
+done
