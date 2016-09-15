@@ -1,3 +1,5 @@
+#!/bin/sh
+
 git log --format='%aN' $1 
 | sort -u 
 | while read user; do 
