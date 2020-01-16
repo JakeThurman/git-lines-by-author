@@ -1,0 +1,8 @@
+echo 'Name,Added,Removed,Net'
+
+git log --format='%aN' $1 \
+| sort -u \
+| while read user; do 
+	git log --numstat --pretty="%H" $1 --author="$user" \
+	| awk -v user="$user" 'NF==3 {plus+=$1; minus+=$2} END {printf("%s,%d,%d,%d\n", user, plus, minus, plus-minus)}'
+done
