@@ -1,3 +1,5 @@
+#!/bin/sh
+
 echo 'Name,Added,Removed,Net'
 
 git log --format='%aN' $1 \
