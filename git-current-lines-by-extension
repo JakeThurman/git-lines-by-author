@@ -1,0 +1,13 @@
+#!/bin/sh
+
+git ls-tree -r HEAD --name-only \
+| perl -ne 'print $1 if m/\.([^.\/]+)$/' \
+| sort -u \
+| while read extension; do
+        echo "$extension"
+        echo "---------"
+
+        git ls-files "*.$extension" | while read f; do git blame -w --line-porcelain -- "$f" | grep -I '^author '; done | sort -f | uniq -ic | sort -n
+
+        echo ""
+done
