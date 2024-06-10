@@ -1,9 +1,15 @@
-# git-lines
+# git-current-lines-by-author
 
-Use this script to count the net lines added and remove by contributer.
+Use this script to count the number of lines of code at the current state of the repo that blames back to each user.
+
+Or, use `git-current-lines-by-author-by-extension` to count by file extension.
+
+# git-lines-contributed
+
+Use this script to quickly count the net lines added and removed by each contributor.
 
 ```bash
-git-lines
+git-lines-contributed
 ```
 
 Example Output:
@@ -36,7 +42,7 @@ git-lines 2.0_release..3.0_release
 If you want a csv export use the git-lines-csv version
 
 ```bash
-git-lines-csv > contributer-stats.csv
+git-lines-contributed-csv > contributor-stats.csv
 ```
 
 Example Output:
